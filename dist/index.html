@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Brick_Bread — Code, servers & community</title>
-  <meta name="description" content="Brick_Bread: Minecraft network owner, developer and content creator. Selected server projects, plugins and infrastructure work.">
-  <meta name="theme-color" content="#171813">
-  <meta property="og:title" content="Brick_Bread — Code, servers & community">
-  <meta property="og:description" content="Minecraft networks, useful tools and the communities around them. Selected work by Brick_Bread.">
+  <title>Brick_Bread — Minecraft servers, tools & infrastructure</title>
+  <meta name="description" content="Brick_Bread builds Minecraft networks, plugins, scripts and self-hosted infrastructure. Selected work, tools and contact details.">
+  <meta name="theme-color" content="#efede3">
+  <meta property="og:title" content="Brick_Bread — Minecraft servers, tools & infrastructure">
+  <meta property="og:description" content="Minecraft networks, useful tools and the systems behind them. Selected work by Brick_Bread.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://brick-bread.me/">
   <link rel="canonical" href="https://brick-bread.me/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23ff7448'/%3E%3Ctext x='10' y='46' font-family='Arial' font-size='40' font-weight='bold' fill='%23171813'%3Ebb%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='9' fill='%23e85d32'/%3E%3Ctext x='10' y='46' font-family='Arial' font-size='40' font-weight='bold' fill='%231a1b17'%3Ebb%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body id="top">
@@ -19,124 +19,143 @@
 
   <header class="site-header wrap">
     <a class="wordmark" href="#top" aria-label="Brick_Bread home">
-      <span class="mark" aria-hidden="true">bb</span>
-      <span>brick_bread<span class="accent">.</span></span>
+      <span class="wordmark-block" aria-hidden="true">bb</span>
+      <span>brick_bread</span>
     </a>
+
     <nav aria-label="Main navigation">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      <a href="#work">work</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-kicker">
-        <span>Developer / network owner / creator</span>
-        <span class="hero-year">Portfolio / 2026</span>
+      <div class="hero-copy">
+        <p class="label">minecraft / code / infrastructure</p>
+        <h1 id="hero-title">Servers, tools,<br>and the bits<br><span>behind them.</span></h1>
+        <p class="hero-intro">I’m Brick_Bread. I run Minecraft projects, write scripts and plugins, and self-host the systems that keep them working.</p>
+
+        <div class="hero-actions">
+          <a class="primary-link" href="#work">See what I build <span aria-hidden="true">↓</span></a>
+          <a class="plain-link" href="https://github.com/Brick-Bread">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
 
-      <div class="hero-title-block">
-        <p class="hero-index" aria-hidden="true">00</p>
-        <h1 id="hero-title">Built one<br><span class="accent">brick</span> at a time.</h1>
-      </div>
-
-      <div class="hero-meta">
-        <p>I’m Brick_Bread. I build Minecraft networks, write practical tools and look after the systems behind them.</p>
-        <a class="button" href="#work">See the work <span aria-hidden="true">↓</span></a>
-      </div>
-
-      <figure class="hero-image">
-        <img src="bricksmp-sunset.png" width="1920" height="1009" alt="Sunset over a Minecraft forest and river" fetchpriority="high">
-        <figcaption><span>BrickSMP archive / recovered build image</span><span>Minecraft at sunset</span></figcaption>
+      <figure class="hero-visual">
+        <div class="image-frame">
+          <img src="bricksmp-sunset.png" width="1920" height="1009" alt="Sunset over a Minecraft forest and river" fetchpriority="high">
+          <span class="image-file" aria-hidden="true">bricksmp-sunset.png</span>
+        </div>
+        <figcaption>Recovered from an earlier BrickSMP build.</figcaption>
       </figure>
+
+      <aside class="hero-note" aria-label="Current focus">
+        <span class="note-key">currently</span>
+        <span>building servers, learning Java, and breaking things on Linux until they make sense.</span>
+      </aside>
     </section>
 
-    <section class="work section wrap" id="work" aria-labelledby="work-title">
-      <div class="section-intro">
-        <p class="eyebrow accent">01 / Selected work</p>
-        <div class="section-intro-copy">
-          <h2 id="work-title">The things I actually<br>build and run.</h2>
-          <p>No fake case studies. Just projects I’ve worked on, systems I’ve maintained and tools I’ve made useful enough to keep around.</p>
-        </div>
+    <section class="work wrap" id="work" aria-labelledby="work-title">
+      <header class="section-header work-header">
+        <p class="label">01 / selected work</p>
+        <h2 id="work-title">Things with my fingerprints on them.</h2>
+      </header>
+
+      <div class="project-list">
+        <article class="project">
+          <div class="project-index" aria-hidden="true">01</div>
+          <div class="project-title">
+            <p class="project-type">minecraft network</p>
+            <h3>Brickworks Network</h3>
+          </div>
+          <p class="project-copy">My own Minecraft network: custom Skript systems, server development, hosting and content. It is the project where most of my interests meet.</p>
+          <div class="project-meta">
+            <span>Skript</span>
+            <span>server ops</span>
+            <span>content</span>
+          </div>
+          <a class="project-open" href="https://github.com/Brick-Bread/brickworks-site" aria-label="View Brickworks Network repository">View repo <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="project">
+          <div class="project-index" aria-hidden="true">02</div>
+          <div class="project-title">
+            <p class="project-type">java plugin</p>
+            <h3>Brick-MapProtect</h3>
+          </div>
+          <p class="project-copy">A Paper and Spigot plugin for protecting original map blocks, including per-world controls and protection from placement, liquids and fire.</p>
+          <div class="project-meta">
+            <span>Java</span>
+            <span>Paper</span>
+            <span>Spigot</span>
+          </div>
+          <a class="project-open" href="https://github.com/Brick-Bread/Brick-MapProtect" aria-label="View Brick-MapProtect repository">View repo <span aria-hidden="true">↗</span></a>
+        </article>
       </div>
 
-      <article class="project project-primary">
-        <div class="project-rail">
-          <span class="project-number">01</span>
-          <span class="eyebrow">Minecraft / Network</span>
+      <div class="work-footer">
+        <p>Those are the useful highlights, not an inflated project count.</p>
+        <a class="plain-link" href="https://github.com/Brick-Bread?tab=repositories">Everything else on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="wrap about-layout">
+        <header class="section-header about-header">
+          <p class="label">02 / about</p>
+          <h2 id="about-title">I like knowing<br>how the whole thing works.</h2>
+        </header>
+
+        <div class="about-story">
+          <p class="lead">I’m brick — a Minecraft network owner and content creator with a habit of digging into the systems underneath whatever I’m building.</p>
+          <p>Brickworks is my own network, which means I end up moving between development, hosting and content rather than staying in one lane.</p>
+          <p>Python and Skript are where I’m most comfortable. I’m learning Java, JavaScript, HTML and CSS through plugins, websites and tools I actually want to use.</p>
+          <p>Self-hosting pulled me into Linux, Docker and networking. I’d rather understand why something broke than keep restarting it and hoping.</p>
         </div>
-        <div class="project-body">
-          <h3>Brickworks<br>Network<span>.</span></h3>
-          <p>My Minecraft network: custom Skript systems, server development, hosting and content creation. It is where code, operations and community overlap.</p>
-          <div class="project-bottom">
-            <span class="tags">Skript · Server operations · Content</span>
-            <a class="project-link" href="https://github.com/Brick-Bread/brickworks-site">View repository <span aria-hidden="true">↗</span></a>
+
+        <div class="tool-board" aria-label="Tools and technologies">
+          <div class="tool-row">
+            <span class="tool-label">use a lot</span>
+            <span>Python</span>
+            <span>Skript</span>
+          </div>
+          <div class="tool-row">
+            <span class="tool-label">learning by building</span>
+            <span>Java</span>
+            <span>JavaScript</span>
+            <span>HTML / CSS</span>
+          </div>
+          <div class="tool-row">
+            <span class="tool-label">running things on</span>
+            <span>Linux</span>
+            <span>Docker</span>
+            <span>Networking</span>
           </div>
         </div>
-      </article>
-
-      <article class="project project-secondary">
-        <div class="project-rail">
-          <span class="project-number">02</span>
-          <span class="eyebrow">Minecraft / Java plugin</span>
-        </div>
-        <div class="project-body">
-          <h3>Brick-MapProtect<span>.</span></h3>
-          <p>A Paper and Spigot plugin for protecting original map blocks, with per-world controls and protection from placement, liquids and fire.</p>
-          <div class="project-bottom">
-            <span class="tags">Java · Paper · Spigot</span>
-            <a class="project-link" href="https://github.com/Brick-Bread/Brick-MapProtect">View repository <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </article>
-
-      <div class="repo-link">
-        <span class="eyebrow">More code lives on GitHub</span>
-        <a href="https://github.com/Brick-Bread?tab=repositories">Browse all repositories <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
-    <section class="about section" id="about" aria-labelledby="about-title">
-      <div class="wrap about-grid">
-        <div class="about-heading">
-          <p class="eyebrow accent">02 / Behind the handle</p>
-          <h2 id="about-title">Curiosity.<br>Code.<br><span>Community.</span></h2>
-        </div>
-
-        <div class="about-copy">
-          <p class="large">I’m brick — a Minecraft network owner and content creator who likes understanding the systems underneath the thing people actually see.</p>
-          <p>Brickworks is my own network: development, hosting and content. I enjoy both sides of it — the code behind the server and the people who make it worth running.</p>
-          <p>Python and Skript are where I’m most confident. I’m continuing to learn Java, JavaScript, HTML and CSS through plugins, websites and practical tools.</p>
-          <p>Self-hosting pulled me into Linux, Docker and networking. Running my own infrastructure means there is always another problem to understand properly instead of papering over.</p>
-
-          <dl class="tool-list">
-            <div><dt>Comfortable</dt><dd>Python / Skript</dd></div>
-            <div><dt>Building with</dt><dd>Java / HTML / CSS / JavaScript</dd></div>
-            <div><dt>Running on</dt><dd>Linux / Docker / networking</dd></div>
-          </dl>
-        </div>
+    <section class="contact wrap" id="contact" aria-labelledby="contact-title">
+      <div class="contact-rule" aria-hidden="true"></div>
+      <div class="contact-copy">
+        <p class="label">03 / contact</p>
+        <h2 id="contact-title">If it sounds interesting,<br>send it over.</h2>
       </div>
-    </section>
-
-    <section class="contact section wrap" id="contact" aria-labelledby="contact-title">
-      <div class="contact-index" aria-hidden="true">03</div>
-      <div class="contact-main">
-        <p class="eyebrow accent">03 / Get in touch</p>
-        <h2 id="contact-title">Got something<br>worth building?</h2>
-      </div>
-      <div class="contact-side">
-        <p>Server development, a useful plugin, content or a collaboration. If it sounds interesting, send it over.</p>
+      <div class="contact-details">
+        <p>Server development, a useful plugin, content or a collaboration. Keep it specific.</p>
         <a class="email" href="mailto:brick@brick-bread.me">brick@brick-bread.me <span aria-hidden="true">↗</span></a>
-        <a class="text-link" href="https://github.com/Brick-Bread">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="plain-link" href="https://github.com/Brick-Bread">github.com/Brick-Bread <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
 
   <footer class="wrap">
-    <a class="wordmark" href="#top">brick_bread<span class="accent">.</span></a>
-    <span>© 2026 Brick_Bread</span>
-    <a href="#top">Back to top ↑</a>
+    <a class="wordmark footer-wordmark" href="#top">brick_bread</a>
+    <span>© 2026</span>
+    <span>built without a framework</span>
+    <a href="#top">top ↑</a>
   </footer>
 </body>
 </html>
