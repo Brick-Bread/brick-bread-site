@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+    body {
+      background-color: #080D17;
+      color: #F4F7FC;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Refined Typography */
+    .text-hero {
+      font-size: clamp(40px, 6vw, 88px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .text-section {
+      font-size: clamp(32px, 4vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .text-body-base {
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    .text-label {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Glassmorphism Utilities */
+    .glass-panel {
+      background: rgba(160, 195, 230, 0.06);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.20);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    @supports not (backdrop-filter: blur(24px)) {
+      .glass-panel {
+        background: #111C2C;
+      }
+    }
+    .glass-panel-hover:hover {
+      background: rgba(210, 230, 255, 0.09);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 231, 240, 0.1);
+    }
+    
+    .glass-nav {
+      background: rgba(160, 195, 230, 0.08);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-primary {
+      background: #8BE7F0;
+      color: #111C2C;
+      box-shadow: 0 4px 16px rgba(139, 231, 240, 0.3);
+    }
+    .btn-primary:hover {
+      background: #A5F0F7;
+      box-shadow: 0 6px 24px rgba(139, 231, 240, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Keyboard Focus */
+    *:focus-visible {
+      outline: 2px solid #8BE7F0;
+      outline-offset: 4px;
+    }
+
+    /* Selection */
+    ::selection {
+      background-color: #8BE7F0;
+      color: #080D17;
+    }
+
+    /* Animations */
+    .animate-hero-text {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .animate-hero-text:nth-child(1) { animation-delay: 0.1s; }
+    .animate-hero-text:nth-child(2) { animation-delay: 0.2s; }
+    .animate-hero-text:nth-child(3) { animation-delay: 0.3s; }
+    
+    .animate-hero-img {
+      animation: scaleDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .js-reveals .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .js-reveals .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes scaleDown {
+      from { transform: scale(1.04); }
+      to { transform: scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      .animate-hero-text, .scroll-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  
+    [hidden] { display:none !important; }
+    #mobile-menu { position:absolute; top:76px; left:24px; right:24px; pointer-events:auto; background:rgba(17,28,44,.96); }
+    #mobile-menu a { display:block; padding:12px 4px; }
+    section[id], #about { scroll-margin-top:120px; }
+    .skip-link { position:absolute; top:8px; left:24px; z-index:100; padding:12px 20px; background:#8BE7F0; color:#111C2C; transform:translateY(-200%); }
+    .skip-link:focus { transform:translateY(0); }
+    @media(max-width:480px) { #contact .glass-panel { padding:32px 24px; } #contact-email span:last-child { font-size:19px; } .text-hero { font-size:clamp(32px,9vw,40px); } }
+    @media(prefers-reduced-motion:reduce) { .glass-panel-hover:hover { transform:none; } }
+    @media(min-width:768px) { #mobile-menu { display:none!important; } }
+  

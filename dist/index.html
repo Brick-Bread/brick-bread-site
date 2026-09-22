@@ -1,114 +1,279 @@
-<!doctype html>
-<html lang="en-GB">
+<!DOCTYPE html><html lang="en-GB" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Brick_Bread — Code, servers & community</title>
-  <meta name="description" content="Brick_Bread: Minecraft network owner, developer and content creator. Explore Minecraft server projects and Java plugins.">
-  <meta name="theme-color" content="#191a18">
-  <meta property="og:title" content="Brick_Bread — Code, servers & community">
-  <meta property="og:description" content="Minecraft networks, useful tools and the communities around them. Selected work by Brick_Bread.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brick_Bread — Code, servers &amp; community</title>
+  <meta name="description" content="Minecraft networks, Java plugins and self-hosted systems. Explore Brickworks Network and Brick-MapProtect by Brick_Bread.">
+  <meta name="theme-color" content="#080D17">
+  <link rel="canonical" href="https://brick-bread.me/">
+  <meta property="og:title" content="Brick_Bread — Code, servers &amp; community">
+  <meta property="og:description" content="Minecraft networks, Java plugins and self-hosted systems.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://brick-bread.me/">
-  <link rel="canonical" href="https://brick-bread.me/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23ff6b3d'/%3E%3Ctext x='10' y='46' font-family='Arial' font-size='40' font-weight='bold' fill='%23191a18'%3Ebb%3C/text%3E%3C/svg%3E">
+  <meta property="og:image" content="https://brick-bread.me/bricksmp-sunset.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=space-grotesk@400,500,600,700&amp;display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=design-2">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=glass-20260922">
 </head>
-<body id="top">
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="header wrap">
-    <a class="wordmark" href="#top" aria-label="Brick_Bread home">brick<span class="brand-joint">_</span>bread<span class="brand-stop">.</span></a>
-    <nav aria-label="Main navigation">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-  <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="intro">Brick_Bread / Developer &amp; network owner</p>
-        <h1 id="hero-title">Minecraft.<br>Behind<br>the <span>blocks.</span></h1>
-        <p class="hero-description">I’m brick. I build and run Brickworks Network, write server plugins, and look after the systems behind them.</p>
-        <a class="button" href="#work">See what I’m building <span aria-hidden="true">↓</span></a>
-      </div>
-      <figure class="hero-image">
-        <img src="bricksmp-sunset.png" width="1920" height="1009" alt="Golden sunset over a Minecraft river, with a red-roofed house among the trees" fetchpriority="high" decoding="async">
-        <figcaption><span>A quieter moment in Minecraft.</span><span aria-hidden="true">One brick at a time.</span></figcaption>
-      </figure>
-      <div class="hero-footnote"><span>Code, servers &amp; community</span><a href="https://github.com/Brick-Bread">GitHub <span aria-hidden="true">↗</span></a></div>
-    </section>
+<body>
+<div class="relative isolate min-h-screen overflow-x-hidden">
+<a id="skip-content" class="skip-link" href="#main">Skip to content</a>
+  <!-- Global Lighting Pools -->
+  <div class="fixed inset-0 pointer-events-none z-[-1]">
+    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(113,158,255,0.15),transparent_60%)] blur-[80px]"></div>
+    <div class="absolute bottom-[10%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(139,231,240,0.08),transparent_60%)] blur-[100px]"></div>
+  </div>
 
-    <section class="work wrap" id="work" aria-labelledby="work-title">
-      <div class="section-heading">
-        <p class="section-index"><span>01</span> / Work</p>
-        <h2 id="work-title">Built to be used.</h2>
-        <a class="text-link" href="https://github.com/Brick-Bread?tab=repositories">All repositories <span aria-hidden="true">↗</span></a>
-      </div>
-      <article class="project project-network" aria-labelledby="network-title">
-        <div class="project-name">
-          <p class="project-type">Minecraft network <span>/ Owner &amp; developer</span></p>
-          <h3 id="network-title">Brickworks<br>Network<span class="brand-stop">.</span></h3>
-          <p class="project-tools">Skript / Server operations / Content</p>
-        </div>
-        <div class="project-detail">
-          <p class="project-summary">A network to build, run<br class="wide-only"> and bring people together.</p>
-          <p>My Minecraft network, from custom Skript systems and server development to hosting and content creation. I look after both the server and the player experience.</p>
-          <a class="project-link" href="https://github.com/Brick-Bread/brickworks-site">Explore Brickworks on GitHub <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-      <article class="project project-plugin" aria-labelledby="plugin-title">
-        <div class="project-name">
-          <p class="project-type">Java plugin <span>/ Paper &amp; Spigot</span></p>
-          <h3 id="plugin-title">Brick-MapProtect<span class="brand-stop">.</span></h3>
-          <p class="project-tools">Java / World protection</p>
-        </div>
-        <div class="project-detail">
-          <p>A plugin that protects original map blocks. Configure protection per world, control block placement, and prevent damage from water, lava and fire.</p>
-          <a class="project-link" href="https://modrinth.com/plugin/brick-mapprotect">View on Modrinth <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-    </section>
+  <!-- Full-bleed Hero Environment -->
+  <div class="absolute top-0 left-0 w-full h-[100vh] z-[-1] overflow-hidden">
+    <img src="bricksmp-sunset.png" alt="Minecraft sunset landscape" width="1920" height="1009" fetchpriority="high" decoding="async" class="w-full h-full object-cover animate-hero-img">
+    <div class="absolute inset-0 bg-gradient-to-b from-canvas/40 via-canvas/60 to-canvas"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-canvas/80 via-transparent to-transparent"></div>
+    <div class="absolute top-[20%] right-[10%] w-[40vw] h-[40vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(234,165,109,0.2),transparent_60%)] blur-[80px]"></div>
+  </div>
 
-    <section class="about" id="about" aria-labelledby="about-title">
-      <div class="wrap about-layout">
-        <div class="about-heading">
-          <p class="section-index"><span>02</span> / About</p>
-          <h2 id="about-title">More than <br>the server.</h2>
-          <p class="about-note">Development. Hosting. Content.<br>Different parts of the same network.</p>
-        </div>
-        <div class="about-body">
-          <p class="about-lead">The code matters.<br>So do the people who turn up.</p>
-          <div class="about-copy">
-            <p>I’m a Minecraft network owner and content creator. Brickworks is my own network: development, hosting and content. I enjoy building the systems behind it and the community around it.</p>
-            <p>Self-hosting got me into Linux, Docker and networking. Looking after my own infrastructure gives me plenty to learn, improve and fix.</p>
+  <div class="flex flex-col min-h-screen">
+
+    <!-- Floating Navigation -->
+    <div class="fixed top-24 left-0 w-full z-50 px-24 pointer-events-none flex justify-center">
+      <header class="pointer-events-auto glass-nav rounded-full px-24 py-16 flex items-center justify-between w-full max-w-3xl">
+        <a href="#" class="font-heading font-medium text-text-primary text-xl tracking-tight hover:text-icy-cyan transition-colors duration-250" id="nav-logo">
+          brick_bread
+        </a>
+        <nav class="hidden md:flex items-center gap-32">
+          <a href="#work" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-work">Work</a>
+          <a href="#expertise" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-expertise">Expertise</a>
+          <a href="#about" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-about">About</a>
+          <a href="#contact" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-contact">Contact</a>
+        </nav>
+        <button class="md:hidden font-mono text-label text-text-muted" aria-label="Menu" id="nav-menu-btn" aria-expanded="false" aria-controls="mobile-menu">
+          <iconify-icon icon="lucide:menu" class="text-2xl"></iconify-icon>
+        </button>
+      </header>
+      <nav id="mobile-menu" aria-label="Mobile navigation" hidden class="glass-panel rounded-card p-24 mt-16">
+        <a id="mobile-work" href="#work">Work</a>
+        <a id="mobile-expertise" href="#expertise">Expertise</a>
+        <a id="mobile-about" href="#about">About</a>
+        <a id="mobile-contact" href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <main id="main" class="flex-1 pt-[25vh] md:pt-[30vh]">
+      <!-- Hero Section -->
+      <section class="pb-64 lg:pb-128 relative min-h-[70vh]">
+        <div class="max-w-site mx-auto px-24 lg:px-64">
+          <div class="max-w-3xl">
+            <h1 class="font-heading font-bold text-hero mb-32 animate-hero-text text-text-primary drop-shadow-lg">
+              Minecraft networks.<br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-icy-cyan to-text-primary">
+                Thoughtfully built.
+              </span>
+            </h1>
+            <p class="text-body-base text-text-primary/90 mb-48 max-w-lg animate-hero-text drop-shadow-md text-lg">
+              I'm brick. I build and run Brickworks Network, write server plugins, and look after the systems behind them.
+            </p>
+            <div class="flex flex-wrap gap-16 animate-hero-text">
+              <a href="#work" class="btn-primary px-32 py-16 font-body font-medium text-[15px] rounded-btn transition-all duration-250 inline-block" id="hero-btn-work">
+                See the work
+              </a>
+              <a href="#contact" class="btn-secondary px-32 py-16 font-body font-medium text-[15px] text-text-primary rounded-btn transition-all duration-250 inline-block" id="hero-btn-contact">
+                Get in touch
+              </a>
+            </div>
           </div>
-          <dl class="tool-list">
-            <div><dt>Go-to languages</dt><dd>Python, Skript</dd></div>
-            <div><dt>Still learning</dt><dd>Java, JavaScript, HTML &amp; CSS</dd></div>
-            <div><dt>Behind the scenes</dt><dd>Linux, Docker, networking</dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
 
-    <section class="contact wrap" id="contact" aria-labelledby="contact-title">
-      <p class="section-index"><span>03</span> / Contact</p>
-      <div class="contact-content">
-        <h2 id="contact-title">Let’s build something<br>worth logging in for.</h2>
-        <p>Server development, a plugin, content or a collaboration.<br class="wide-only"> Tell me what you have in mind.</p>
-        <a class="email" href="mailto:brick@brick-bread.me">brick@brick-bread.me<span aria-hidden="true">↗</span></a>
+          <div class="absolute bottom-32 left-24 lg:left-64 flex items-center gap-8 text-sunset-amber animate-hero-text drop-shadow-md">
+             <iconify-icon icon="lucide:sunset" class="text-lg"></iconify-icon>
+             <span class="font-mono text-label text-text-primary">A quieter moment in Minecraft</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected Projects (Asymmetrical Gallery) -->
+      <section id="work" class="py-64 lg:py-96 relative z-10">
+        <div class="max-w-site mx-auto px-24 lg:px-64">
+          <h2 class="font-heading font-semibold text-section mb-64 scroll-reveal">
+            Selected projects
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-24 lg:gap-32">
+
+            <!-- Project 1: Brickworks (Spans 2 cols on md) -->
+            <article class="md:col-span-2 glass-panel glass-panel-hover rounded-card p-32 lg:p-48 transition-all duration-250 flex flex-col md:flex-row gap-32 lg:gap-64 scroll-reveal">
+              <div class="flex-1 flex flex-col justify-between">
+                <div>
+                  <p class="font-mono text-label text-soft-blue mb-16">
+                    Owner &amp; Developer
+                  </p>
+                  <h3 class="font-heading font-medium text-3xl md:text-4xl lg:text-5xl mb-24">
+                    <a href="https://github.com/Brick-Bread/brickworks-site" target="_blank" rel="noopener noreferrer" class="hover:text-icy-cyan transition-colors duration-250 inline-flex items-center gap-12" id="proj1-link">
+                      Brickworks Network
+                      <iconify-icon icon="lucide:arrow-up-right" class="text-xl opacity-50"></iconify-icon>
+                    </a>
+                  </h3>
+                  <p class="text-body-base text-text-muted max-w-2xl">
+                    My Minecraft network, from custom Skript systems and server development to hosting and content creation. I look after both the server and the player experience.
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-12 mt-32">
+                  <span class="font-mono text-label px-12 py-6 bg-white/5 rounded-full border border-white/10 text-text-muted">Skript</span>
+                  <span class="font-mono text-label px-12 py-6 bg-white/5 rounded-full border border-white/10 text-text-muted">Server operations</span>
+                  <span class="font-mono text-label px-12 py-6 bg-white/5 rounded-full border border-white/10 text-text-muted">Content</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: MapProtect -->
+            <article class="md:col-span-2 glass-panel glass-panel-hover rounded-card p-32 flex flex-col justify-between transition-all duration-250 scroll-reveal">
+              <div>
+                <p class="font-mono text-label text-sunset-amber mb-16">
+                  Java Plugin
+                </p>
+                <h3 class="font-heading font-medium text-2xl mb-16">
+                  <a href="https://modrinth.com/plugin/brick-mapprotect" target="_blank" rel="noopener noreferrer" class="hover:text-icy-cyan transition-colors duration-250 inline-flex items-center gap-8" id="proj2-link">
+                    Brick-MapProtect
+                     <iconify-icon icon="lucide:arrow-up-right" class="text-lg opacity-50"></iconify-icon>
+                  </a>
+                </h3>
+                <p class="text-body-base text-text-muted mb-24">
+                  Protects original map blocks, with per-world protection, placement controls, and protection against water, lava and fire.
+                </p>
+              </div>
+              <div>
+                <div class="flex flex-wrap gap-8 mb-24">
+                  <span class="font-mono text-label px-10 py-4 bg-white/5 rounded-full border border-white/10 text-text-muted">Java</span>
+                  <span class="font-mono text-label px-10 py-4 bg-white/5 rounded-full border border-white/10 text-text-muted">Paper</span>
+                  <span class="font-mono text-label px-10 py-4 bg-white/5 rounded-full border border-white/10 text-text-muted">Spigot</span>
+                </div>
+                <a href="https://github.com/Brick-Bread/Brick-MapProtect" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-8 font-mono text-label text-text-primary hover:text-icy-cyan transition-colors duration-250" id="proj2-source">
+                  <iconify-icon icon="lucide:github" class="text-lg"></iconify-icon>
+                  Source Code
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Expertise & About Section -->
+      <section id="expertise" class="py-64 lg:py-96 relative z-10">
+        <div class="max-w-site mx-auto px-24 lg:px-64">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-48 lg:gap-64">
+
+            <!-- Expertise Rail -->
+            <div class="lg:col-span-5 scroll-reveal">
+              <div class="glass-panel rounded-card p-32 lg:p-48 h-full">
+                <h2 class="font-heading font-semibold text-3xl mb-48 text-text-primary">
+                  Expertise
+                </h2>
+                <div class="space-y-32 relative before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-white/10 pl-24">
+                  <div class="relative">
+                    <div class="absolute w-2 h-2 rounded-full bg-icy-cyan left-[-28px] top-8 shadow-[0_0_8px_rgba(139,231,240,0.8)]"></div>
+                    <h4 class="font-mono text-label text-text-muted mb-8">Go-to Languages</h4>
+                    <p class="text-body-base text-text-primary font-medium">
+                      Python and Skript
+                    </p>
+                  </div>
+                  <div class="relative">
+                    <div class="absolute w-2 h-2 rounded-full bg-soft-blue left-[-28px] top-8 shadow-[0_0_8px_rgba(113,158,255,0.8)]"></div>
+                    <h4 class="font-mono text-label text-text-muted mb-8">Self-hosting</h4>
+                    <p class="text-body-base text-text-primary font-medium">
+                      Linux, Docker and networking
+                    </p>
+                  </div>
+                  <div class="relative">
+                    <div class="absolute w-2 h-2 rounded-full bg-white/30 left-[-28px] top-8"></div>
+                    <h4 class="font-mono text-label text-text-muted mb-8">Actively learning</h4>
+                    <p class="text-body-base text-text-primary font-medium">
+                      Java, JavaScript, HTML and CSS
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- About -->
+            <div class="lg:col-span-7 scroll-reveal" id="about">
+              <div class="p-0 lg:py-32">
+                <h2 class="font-heading font-semibold text-section mb-48 text-text-primary">
+                  About
+                </h2>
+                <div class="space-y-24 text-body-base text-text-muted max-w-2xl">
+                  <p>
+                    I'm a Minecraft network owner and content creator. Brickworks is my own network: development, hosting and content. I enjoy building the systems behind it and the community around it.
+                  </p>
+                  <p>
+                    Self-hosting got me into Linux, Docker and networking. Looking after my own infrastructure gives me plenty to learn, improve and fix.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section (Luminous Panel) -->
+      <section id="contact" class="py-64 lg:py-128 relative z-10">
+        <div class="max-w-site mx-auto px-24 lg:px-64 scroll-reveal">
+          <div class="glass-panel rounded-[32px] p-48 lg:p-80 relative overflow-hidden text-center lg:text-left">
+             <!-- Intense inner glow -->
+             <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,rgba(139,231,240,0.1),transparent_70%)] pointer-events-none"></div>
+             <div class="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,rgba(113,158,255,0.08),transparent_70%)] pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-3xl mx-auto lg:mx-0">
+              <h2 class="font-heading font-semibold text-4xl lg:text-5xl mb-24 text-text-primary">
+                Let's build something worth logging in for.
+              </h2>
+              <p class="text-body-base text-text-muted mb-48 text-lg">
+                Server development, a plugin, content or a collaboration.
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-32 justify-center lg:justify-start">
+                <a href="mailto:brick@brick-bread.me" class="inline-flex flex-col group items-center lg:items-start" id="contact-email">
+                  <span class="font-mono text-label text-text-muted mb-8">Email</span>
+                  <span class="font-heading font-medium text-xl md:text-2xl text-text-primary group-hover:text-icy-cyan transition-colors duration-250 inline-flex items-center gap-8">
+                    brick@brick-bread.me
+                    <iconify-icon icon="lucide:arrow-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-250"></iconify-icon>
+                  </span>
+                </a>
+
+                <a href="https://github.com/Brick-Bread" target="_blank" rel="noopener noreferrer" class="inline-flex flex-col group items-center lg:items-start" id="contact-github">
+                  <span class="font-mono text-label text-text-muted mb-8">GitHub</span>
+                  <span class="font-heading font-medium text-xl md:text-2xl text-text-primary group-hover:text-soft-blue transition-colors duration-250 inline-flex items-center gap-8">
+                    @Brick-Bread
+                    <iconify-icon icon="lucide:arrow-up-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-250"></iconify-icon>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-48 relative z-10 border-t border-white/5 mt-auto">
+      <div class="max-w-site mx-auto px-24 lg:px-64 flex flex-col md:flex-row justify-between items-center gap-16">
+        <p class="font-mono text-label text-text-muted">
+          © 2026 Brick_Bread
+        </p>
+        <p class="font-mono text-label text-text-muted flex items-center gap-8">
+          <span class="w-2 h-2 rounded-full bg-icy-cyan/50"></span>
+          Code, servers &amp; community
+        </p>
       </div>
-    </section>
-  </main>
-  <footer class="footer wrap">
-    <a class="wordmark" href="#top" aria-label="Brick_Bread home">brick<span class="brand-joint">_</span>bread<span class="brand-stop">.</span></a>
-    <p>© 2026 Brick_Bread</p>
-    <a href="https://github.com/Brick-Bread">GitHub <span aria-hidden="true">↗</span></a>
-    <a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
-  </footer>
+    </footer>
+
+  </div>
+
+  <script src="script.js" defer></script>
+</div>
 </body>
 </html>
