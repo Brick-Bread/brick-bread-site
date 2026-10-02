@@ -1,6 +1,0 @@
-{
-  "name": "brick-bread-portfolio",
-  "private": true,
-  "scripts": { "build": "tailwindcss -c build/tailwind.config.cjs -i build/input.css -o dist/styles.css --minify" },
-  "devDependencies": { "tailwindcss": "3.4.17" }
-}

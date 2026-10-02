@@ -1,19 +1,20 @@
 # Brick_Bread portfolio
 
-Portfolio at https://brick-bread.me. The existing GitHub Pages workflow publishes dist/ on pushes to main.
+Portfolio at https://brick-bread.me. The GitHub Pages workflow publishes `dist/` on pushes to `main`.
 
-Featured projects: Brickworks Network and Brick-MapProtect. The approved design uses an immersive Minecraft sunset, glass panels, ambient lighting and animations.
+Hand-written static site, no framework and no build step. Each page is a single self-contained HTML file with its CSS and JavaScript inline.
+
+Featured projects: Brickworks Network, Brick-MapProtect and WNotch.
 
 ## Edit
 
-- dist/index.html: content, links and metadata.
-- dist/script.js: mobile navigation and progressive scroll reveals.
-- build/input.css: visual styles, animation and reduced-motion rules.
-- build/tailwind.config.cjs: design tokens and utility configuration.
-- dist/bricksmp-sunset.png: existing portfolio image, hosted with the site.
+- `dist/index.html`: the whole site (content, styles and scripts in one file).
+- `dist/404.html`: the not-found page, self-contained in the same style.
+- `dist/bricksmp-sunset.png`: the BrickSMP screenshot used in the flagship project.
+- `dist/CNAME`: the custom domain (`brick-bread.me`).
 
-Run npm install, then npm run build after changing styles or utility classes. Commit the generated dist/styles.css alongside source changes. Production uses compiled CSS without the Tailwind browser runtime. Fonts and icons use their existing public providers.
+No install or build is needed. Edit a file and push to `main`; the workflow deploys `dist/` as-is. To preview locally, open `dist/index.html` in a browser or serve the folder with any static server.
 
-Content stays visible without JavaScript. Reduced-motion settings disable animation and smooth scrolling. Mobile navigation closes on selection or Escape.
+Fonts load from Google Fonts. The theme follows the viewer's system preference and has a manual light/dark toggle. Content stays readable without JavaScript, and reduced-motion settings disable the ember animation, scroll reveals and smooth scrolling.
 
-Copy and project details come from the previous public Brick-Bread portfolios and repositories. The sunset was recovered for the earlier portfolio from the BrickSMP site. Contact: brick@brick-bread.me.
+Contact: brick@brick-bread.me.
