@@ -2,18 +2,57 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#191a18">
-  <title>Page not found — Brick_Bread</title>
-  <link rel="stylesheet" href="https://brick-bread.me/styles.css?v=design-2">
+  <meta name="theme-color" content="#0B0E16">
+  <title>Page not found · Brick_Bread</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0E16; --surface: #131926; --border: rgba(255,255,255,0.1);
+      --border-strong: rgba(255,255,255,0.18); --fg: #EDF0F7; --muted: #949EB6;
+      --accent: #F2A65A;
+      --f-display: "Bricolage Grotesque", system-ui, sans-serif;
+      --f-body: "IBM Plex Sans", system-ui, sans-serif;
+      --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+      color-scheme: dark;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #F1F4F9; --surface: #FFFFFF; --border: rgba(18,23,38,0.1);
+        --border-strong: rgba(18,23,38,0.18); --fg: #121726; --muted: #566079;
+        --accent: #B96A22; color-scheme: light;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body);
+      display: grid; place-items: center; padding: 24px; text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { max-width: 32rem; }
+    .idx { font-family: var(--f-mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.6rem, 10vw, 4.4rem); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 16px; }
+    h1 span { color: var(--accent); }
+    p.note { color: var(--muted); font-size: 1.05rem; margin: 0 0 32px; }
+    a.btn {
+      display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-mono); font-size: 0.9rem;
+      background: var(--accent); color: #140d05; font-weight: 500; text-decoration: none;
+      padding: 13px 22px; border-radius: 11px; transition: transform .15s;
+    }
+    a.btn:active { transform: translateY(1px); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  </style>
 </head>
 <body>
-  <main class="not-found wrap">
-    <p class="section-index"><span>404</span> / Page not found</p>
-    <h1>A missing<br><span>brick.</span></h1>
-    <p>This page doesn’t exist, or it has moved.</p>
-    <a class="button" href="https://brick-bread.me/">Back to the portfolio <span aria-hidden="true">↗</span></a>
+  <main>
+    <p class="idx">404 · page not found</p>
+    <h1>A missing <span>brick.</span></h1>
+    <p class="note">This page doesn't exist, or it has moved.</p>
+    <a class="btn" href="/">Back to the portfolio <span aria-hidden="true">&#8599;</span></a>
   </main>
 </body>
 </html>

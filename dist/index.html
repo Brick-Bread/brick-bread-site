@@ -1,279 +1,606 @@
-<!DOCTYPE html><html lang="en-GB" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brick_Bread — Code, servers &amp; community</title>
-  <meta name="description" content="Minecraft networks, Java plugins and self-hosted systems. Explore Brickworks Network and Brick-MapProtect by Brick_Bread.">
-  <meta name="theme-color" content="#080D17">
-  <link rel="canonical" href="https://brick-bread.me/">
-  <meta property="og:title" content="Brick_Bread — Code, servers &amp; community">
-  <meta property="og:description" content="Minecraft networks, Java plugins and self-hosted systems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://brick-bread.me/">
-  <meta property="og:image" content="https://brick-bread.me/bricksmp-sunset.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=space-grotesk@400,500,600,700&amp;display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=glass-20260922">
-</head>
-<body>
-<div class="relative isolate min-h-screen overflow-x-hidden">
-<a id="skip-content" class="skip-link" href="#main">Skip to content</a>
-  <!-- Global Lighting Pools -->
-  <div class="fixed inset-0 pointer-events-none z-[-1]">
-    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(113,158,255,0.15),transparent_60%)] blur-[80px]"></div>
-    <div class="absolute bottom-[10%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(139,231,240,0.08),transparent_60%)] blur-[100px]"></div>
+<title>Brick_Bread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: single-column editorial, slim sticky bar, torchlit hero with ember canvas,
+     feature project blocks, expertise/about split, contact block. Dark-first (a night server world). */
+  :root {
+    --bg: #0B0E16;
+    --surface: #131926;
+    --surface-2: #1A2234;
+    --border: rgba(255,255,255,0.09);
+    --border-strong: rgba(255,255,255,0.16);
+    --fg: #EDF0F7;
+    --muted: #949EB6;
+    --accent: #F2A65A;        /* torch amber, the one bold note */
+    --accent-soft: rgba(242,166,90,0.14);
+    --accent-2: #6FD3C4;      /* quiet cool secondary */
+    --shadow: 0 24px 60px -24px rgba(0,0,0,0.65);
+    color-scheme: dark;
+
+    --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+
+    --maxw: 1120px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #F1F4F9;
+      --surface: #FFFFFF;
+      --surface-2: #E9EDF5;
+      --border: rgba(18,23,38,0.10);
+      --border-strong: rgba(18,23,38,0.18);
+      --fg: #121726;
+      --muted: #566079;
+      --accent: #B96A22;
+      --accent-soft: rgba(185,106,34,0.12);
+      --accent-2: #138C7A;
+      --shadow: 0 22px 50px -26px rgba(26,36,60,0.35);
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #F1F4F9;
+    --surface: #FFFFFF;
+    --surface-2: #E9EDF5;
+    --border: rgba(18,23,38,0.10);
+    --border-strong: rgba(18,23,38,0.18);
+    --fg: #121726;
+    --muted: #566079;
+    --accent: #B96A22;
+    --accent-soft: rgba(185,106,34,0.12);
+    --accent-2: #138C7A;
+    --shadow: 0 22px 50px -26px rgba(26,36,60,0.35);
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--f-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { font-family: var(--f-display); font-weight: 700; line-height: 1.05; text-wrap: balance; margin: 0; }
+  ::selection { background: var(--accent); color: #0B0E16; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(20px, 5vw, 48px); }
+  .mono { font-family: var(--f-mono); }
+  .eyebrow {
+    font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ---------- top bar ---------- */
+  header.bar {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--f-mono); font-weight: 500; font-size: 0.98rem; letter-spacing: -0.01em; }
+  .brand .cube {
+    width: 18px; height: 18px; border-radius: 4px; flex: none;
+    background:
+      linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #000)) ;
+    box-shadow: 0 0 0 1px var(--border-strong), 0 0 14px -2px var(--accent);
+  }
+  .brand b { color: var(--fg); font-weight: 600; }
+  .brand .u { color: var(--accent); }
+  nav.links { display: flex; align-items: center; gap: clamp(14px, 3vw, 30px); }
+  nav.links a { font-family: var(--f-mono); font-size: 0.82rem; color: var(--muted); transition: color .2s; }
+  nav.links a:hover { color: var(--fg); }
+  .nav-hide { display: none; }
+  @media (min-width: 720px) { .nav-hide { display: inline; } }
+  .toggle {
+    display: inline-grid; place-items: center; width: 36px; height: 36px; flex: none;
+    border-radius: 9px; border: 1px solid var(--border); background: var(--surface);
+    color: var(--fg); cursor: pointer; transition: border-color .2s, transform .15s;
+  }
+  .toggle:hover { border-color: var(--border-strong); }
+  .toggle:active { transform: scale(0.94); }
+  .toggle svg { width: 17px; height: 17px; }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; overflow: hidden; }
+  .hero canvas#embers { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.9; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(70% 55% at 78% 8%, var(--accent-soft), transparent 60%),
+      radial-gradient(60% 50% at 8% 90%, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 62%);
+  }
+  .hero-inner { position: relative; padding-block: clamp(56px, 11vw, 120px) clamp(40px, 8vw, 80px); }
+  .status {
+    display: inline-flex; align-items: center; gap: 9px; margin-bottom: 26px;
+    font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted);
+    border: 1px solid var(--border); background: var(--surface);
+    padding: 6px 13px 6px 11px; border-radius: 999px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-2) 70%, transparent); }
+  .dot.live { animation: pulse 2.4s ease-out infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--accent-2) 60%, transparent);} 70%{box-shadow:0 0 0 7px transparent;} 100%{box-shadow:0 0 0 0 transparent;} }
+  h1.title {
+    font-size: clamp(2.5rem, 7.2vw, 4.6rem); font-weight: 800; letter-spacing: -0.03em;
+    max-width: 16ch; margin-bottom: 22px;
+  }
+  h1.title .hl { color: var(--accent); }
+  .lede { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--muted); max-width: 54ch; margin-bottom: 34px; }
+  .lede b { color: var(--fg); font-weight: 600; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-mono); font-size: 0.9rem;
+    padding: 13px 22px; border-radius: 11px; border: 1px solid transparent; cursor: pointer;
+    transition: transform .15s, background .2s, border-color .2s; background: none; color: inherit;
+  }
+  .btn svg { width: 16px; height: 16px; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: #140d05; font-weight: 500; }
+  .btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, #fff); }
+  .btn-ghost { border-color: var(--border-strong); color: var(--fg); }
+  .btn-ghost:hover { background: var(--surface); }
+  .ip-chip {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 30px;
+    font-family: var(--f-mono); font-size: 0.86rem; color: var(--fg);
+    border: 1px solid var(--border); background: var(--surface); border-radius: 11px;
+    padding: 8px 8px 8px 15px;
+  }
+  .ip-chip .lbl { color: var(--muted); }
+  .ip-chip code { color: var(--accent); }
+  .copy {
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-family: var(--f-mono);
+    font-size: 0.76rem; color: var(--muted); background: var(--surface-2); border: 1px solid var(--border);
+    padding: 6px 10px; border-radius: 7px; transition: color .2s, border-color .2s;
+  }
+  .copy:hover { color: var(--fg); border-color: var(--border-strong); }
+  .copy svg { width: 13px; height: 13px; }
+  .copy.done { color: var(--accent-2); border-color: color-mix(in srgb, var(--accent-2) 50%, transparent); }
+
+  /* ---------- section frame ---------- */
+  section.block { padding-block: clamp(56px, 9vw, 104px); position: relative; }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+  .sec-head h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; }
+  .sec-head .idx { font-family: var(--f-mono); font-size: 0.8rem; color: var(--accent); }
+  .rule { height: 1px; background: var(--border); border: 0; margin: 0; }
+
+  /* ---------- project cards ---------- */
+  .projects { display: grid; gap: 22px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+    padding: clamp(24px, 3.5vw, 40px); transition: border-color .25s, transform .25s, box-shadow .25s;
+  }
+  .card:hover { border-color: var(--border-strong); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .feature { display: grid; gap: clamp(24px, 4vw, 48px); grid-template-columns: 1fr; }
+  @media (min-width: 860px) { .feature { grid-template-columns: 1.05fr 0.95fr; align-items: center; } }
+  .proj-role { font-family: var(--f-mono); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .proj-role.cool { color: var(--accent-2); }
+  .card h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .card h3 a { display: inline-flex; align-items: center; gap: 10px; transition: color .2s; }
+  .card h3 a:hover { color: var(--accent); }
+  .card h3 a svg { width: 0.72em; height: 0.72em; opacity: 0.55; }
+  .card p.desc { color: var(--muted); margin: 0 0 22px; max-width: 54ch; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .tag { font-family: var(--f-mono); font-size: 0.72rem; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 11px; }
+  .proj-links { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+  .proj-links a { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-mono); font-size: 0.82rem; color: var(--fg); transition: color .2s; }
+  .proj-links a:hover { color: var(--accent); }
+  .proj-links a svg { width: 15px; height: 15px; }
+  .shot {
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--border-strong);
+    aspect-ratio: 16 / 10; max-width: 100%; position: relative; background: var(--surface-2);
+  }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot .cap {
+    position: absolute; left: 12px; bottom: 11px; font-family: var(--f-mono); font-size: 0.72rem;
+    color: #fff; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    padding: 4px 10px; border-radius: 7px; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .two { display: grid; gap: 22px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .two { grid-template-columns: 1fr 1fr; } }
+
+  /* ---------- workshop (small links) ---------- */
+  .workshop { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 22px; }
+  @media (min-width: 620px) { .workshop { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 920px) { .workshop { grid-template-columns: 1fr 1fr 1fr; } }
+  .mini {
+    display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 13px; padding: 18px; transition: border-color .2s, transform .2s;
+  }
+  .mini:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .mini .mi { width: 34px; height: 34px; flex: none; display: grid; place-items: center; border-radius: 9px; background: var(--accent-soft); color: var(--accent); }
+  .mini .mi svg { width: 18px; height: 18px; }
+  .mini h4 { margin: 0 0 3px; font-family: var(--f-body); font-weight: 600; font-size: 0.98rem; display: inline-flex; align-items: center; gap: 6px; }
+  .mini h4 svg { width: 13px; height: 13px; opacity: .5; }
+  .mini p { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+  .mini .lang { font-family: var(--f-mono); font-size: 0.7rem; color: var(--accent-2); margin-top: 7px; display: block; }
+
+  /* ---------- expertise + about ---------- */
+  .split { display: grid; gap: clamp(28px, 5vw, 56px); grid-template-columns: 1fr; }
+  @media (min-width: 880px) { .split { grid-template-columns: 0.85fr 1.15fr; } }
+  .exp-item { padding-left: 22px; position: relative; padding-block: 2px; margin-bottom: 26px; }
+  .exp-list { border-left: 1px solid var(--border); }
+  .exp-item::before { content: ""; position: absolute; left: -4.5px; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px -1px var(--accent); }
+  .exp-item:nth-child(even)::before { background: var(--accent-2); box-shadow: 0 0 10px -1px var(--accent-2); }
+  .exp-item h4 { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 5px; font-weight: 500; }
+  .exp-item p { margin: 0; font-weight: 600; font-size: 1.02rem; }
+  .about p { color: var(--muted); max-width: 60ch; margin: 0 0 18px; }
+  .about p b { color: var(--fg); font-weight: 600; }
+
+  /* ---------- contact ---------- */
+  .contact-card {
+    position: relative; overflow: hidden; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 24px; padding: clamp(32px, 6vw, 72px);
+  }
+  .contact-card::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 80% at 100% 0%, var(--accent-soft), transparent 60%); }
+  .contact-card h2 { position: relative; font-size: clamp(1.9rem, 4.6vw, 3.1rem); font-weight: 800; letter-spacing: -0.03em; max-width: 18ch; margin-bottom: 18px; }
+  .contact-card > p { position: relative; color: var(--muted); max-width: 52ch; margin: 0 0 40px; font-size: 1.08rem; }
+  .contact-grid { position: relative; display: grid; gap: 26px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .contact-grid { grid-template-columns: repeat(3, auto); } }
+  .cfield .k { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 8px; }
+  .cfield .v { font-family: var(--f-display); font-weight: 600; font-size: clamp(1.05rem, 2.2vw, 1.35rem); display: inline-flex; align-items: center; gap: 9px; }
+  .cfield a.v:hover { color: var(--accent); }
+  .cfield .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--border); padding-block: 34px; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); }
+  .foot .made { display: inline-flex; align-items: center; gap: 8px; }
+  .foot .made .sq { width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+
+  /* ---------- reveal (visible by default; JS enables motion) ---------- */
+  .js-motion .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+  .js-motion .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js-motion .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+    .dot.live { animation: none; }
+    * { scroll-behavior: auto !important; }
+  }
+  html { scroll-behavior: smooth; }
+  .skip { position: absolute; left: -9999px; top: 0; background: var(--accent); color: #0B0E16; padding: 10px 16px; border-radius: 8px; z-index: 100; font-family: var(--f-mono); font-size: .85rem; }
+  .skip:focus { left: 12px; top: 12px; }
+</style>
+
+<a class="skip" href="#work">Skip to content</a>
+
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a class="brand" href="#top" aria-label="Brick_Bread home">
+      <span class="cube" aria-hidden="true"></span>
+      <span><b>brick</b><span class="u">_</span><b>bread</b></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a class="nav-hide" href="#work">Work</a>
+      <a class="nav-hide" href="#stack">Stack</a>
+      <a class="nav-hide" href="#about">About</a>
+      <a class="nav-hide" href="#contact">Contact</a>
+      <button class="toggle" id="themeBtn" type="button" aria-label="Switch colour theme" title="Switch theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      </button>
+    </nav>
   </div>
+</header>
 
-  <!-- Full-bleed Hero Environment -->
-  <div class="absolute top-0 left-0 w-full h-[100vh] z-[-1] overflow-hidden">
-    <img src="bricksmp-sunset.png" alt="Minecraft sunset landscape" width="1920" height="1009" fetchpriority="high" decoding="async" class="w-full h-full object-cover animate-hero-img">
-    <div class="absolute inset-0 bg-gradient-to-b from-canvas/40 via-canvas/60 to-canvas"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-canvas/80 via-transparent to-transparent"></div>
-    <div class="absolute top-[20%] right-[10%] w-[40vw] h-[40vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(234,165,109,0.2),transparent_60%)] blur-[80px]"></div>
-  </div>
+<main id="top">
 
-  <div class="flex flex-col min-h-screen">
-
-    <!-- Floating Navigation -->
-    <div class="fixed top-24 left-0 w-full z-50 px-24 pointer-events-none flex justify-center">
-      <header class="pointer-events-auto glass-nav rounded-full px-24 py-16 flex items-center justify-between w-full max-w-3xl">
-        <a href="#" class="font-heading font-medium text-text-primary text-xl tracking-tight hover:text-icy-cyan transition-colors duration-250" id="nav-logo">
-          brick_bread
+  <section class="hero">
+    <canvas id="embers" aria-hidden="true"></canvas>
+    <div class="wrap hero-inner">
+      <span class="status"><span class="dot live" aria-hidden="true"></span> Minecraft server dev &amp; owner · Wolverhampton, UK</span>
+      <h1 class="title">I build Minecraft worlds, and the <span class="hl">systems</span> behind them.</h1>
+      <p class="lede">I'm <b>brick</b>. I run <b>Brickworks Network</b>, write server plugins, and self-host the infrastructure that keeps it all online.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#work">See the work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </a>
-        <nav class="hidden md:flex items-center gap-32">
-          <a href="#work" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-work">Work</a>
-          <a href="#expertise" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-expertise">Expertise</a>
-          <a href="#about" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-about">About</a>
-          <a href="#contact" class="font-mono text-label text-text-muted hover:text-text-primary transition-colors duration-250" id="nav-contact">Contact</a>
-        </nav>
-        <button class="md:hidden font-mono text-label text-text-muted" aria-label="Menu" id="nav-menu-btn" aria-expanded="false" aria-controls="mobile-menu">
-          <iconify-icon icon="lucide:menu" class="text-2xl"></iconify-icon>
-        </button>
-      </header>
-      <nav id="mobile-menu" aria-label="Mobile navigation" hidden class="glass-panel rounded-card p-24 mt-16">
-        <a id="mobile-work" href="#work">Work</a>
-        <a id="mobile-expertise" href="#expertise">Expertise</a>
-        <a id="mobile-about" href="#about">About</a>
-        <a id="mobile-contact" href="#contact">Contact</a>
-      </nav>
-    </div>
-
-    <main id="main" class="flex-1 pt-[25vh] md:pt-[30vh]">
-      <!-- Hero Section -->
-      <section class="pb-64 lg:pb-128 relative min-h-[70vh]">
-        <div class="max-w-site mx-auto px-24 lg:px-64">
-          <div class="max-w-3xl">
-            <h1 class="font-heading font-bold text-hero mb-32 animate-hero-text text-text-primary drop-shadow-lg">
-              Minecraft networks.<br>
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-icy-cyan to-text-primary">
-                Thoughtfully built.
-              </span>
-            </h1>
-            <p class="text-body-base text-text-primary/90 mb-48 max-w-lg animate-hero-text drop-shadow-md text-lg">
-              I'm brick. I build and run Brickworks Network, write server plugins, and look after the systems behind them.
-            </p>
-            <div class="flex flex-wrap gap-16 animate-hero-text">
-              <a href="#work" class="btn-primary px-32 py-16 font-body font-medium text-[15px] rounded-btn transition-all duration-250 inline-block" id="hero-btn-work">
-                See the work
-              </a>
-              <a href="#contact" class="btn-secondary px-32 py-16 font-body font-medium text-[15px] text-text-primary rounded-btn transition-all duration-250 inline-block" id="hero-btn-contact">
-                Get in touch
-              </a>
-            </div>
-          </div>
-
-          <div class="absolute bottom-32 left-24 lg:left-64 flex items-center gap-8 text-sunset-amber animate-hero-text drop-shadow-md">
-             <iconify-icon icon="lucide:sunset" class="text-lg"></iconify-icon>
-             <span class="font-mono text-label text-text-primary">A quieter moment in Minecraft</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Selected Projects (Asymmetrical Gallery) -->
-      <section id="work" class="py-64 lg:py-96 relative z-10">
-        <div class="max-w-site mx-auto px-24 lg:px-64">
-          <h2 class="font-heading font-semibold text-section mb-64 scroll-reveal">
-            Selected projects
-          </h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-24 lg:gap-32">
-
-            <!-- Project 1: Brickworks (Spans 2 cols on md) -->
-            <article class="md:col-span-2 glass-panel glass-panel-hover rounded-card p-32 lg:p-48 transition-all duration-250 flex flex-col md:flex-row gap-32 lg:gap-64 scroll-reveal">
-              <div class="flex-1 flex flex-col justify-between">
-                <div>
-                  <p class="font-mono text-label text-soft-blue mb-16">
-                    Owner &amp; Developer
-                  </p>
-                  <h3 class="font-heading font-medium text-3xl md:text-4xl lg:text-5xl mb-24">
-                    <a href="https://github.com/Brick-Bread/brickworks-site" target="_blank" rel="noopener noreferrer" class="hover:text-icy-cyan transition-colors duration-250 inline-flex items-center gap-12" id="proj1-link">
-                      Brickworks Network
-                      <iconify-icon icon="lucide:arrow-up-right" class="text-xl opacity-50"></iconify-icon>
-                    </a>
-                  </h3>
-                  <p class="text-body-base text-text-muted max-w-2xl">
-                    My Minecraft network, from custom Skript systems and server development to hosting and content creation. I look after both the server and the player experience.
-                  </p>
-                </div>
-                <div class="flex flex-wrap gap-12 mt-32">
-                  <span class="font-mono text-label px-12 py-6 bg-white/5 rounded-full border border-white/10 text-text-muted">Skript</span>
-                  <span class="font-mono text-label px-12 py-6 bg-white/5 rounded-full border border-white/10 text-text-muted">Server operations</span>
-                  <span class="font-mono text-label px-12 py-6 bg-white/5 rounded-full border border-white/10 text-text-muted">Content</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Project 2: MapProtect -->
-            <article class="md:col-span-2 glass-panel glass-panel-hover rounded-card p-32 flex flex-col justify-between transition-all duration-250 scroll-reveal">
-              <div>
-                <p class="font-mono text-label text-sunset-amber mb-16">
-                  Java Plugin
-                </p>
-                <h3 class="font-heading font-medium text-2xl mb-16">
-                  <a href="https://modrinth.com/plugin/brick-mapprotect" target="_blank" rel="noopener noreferrer" class="hover:text-icy-cyan transition-colors duration-250 inline-flex items-center gap-8" id="proj2-link">
-                    Brick-MapProtect
-                     <iconify-icon icon="lucide:arrow-up-right" class="text-lg opacity-50"></iconify-icon>
-                  </a>
-                </h3>
-                <p class="text-body-base text-text-muted mb-24">
-                  Protects original map blocks, with per-world protection, placement controls, and protection against water, lava and fire.
-                </p>
-              </div>
-              <div>
-                <div class="flex flex-wrap gap-8 mb-24">
-                  <span class="font-mono text-label px-10 py-4 bg-white/5 rounded-full border border-white/10 text-text-muted">Java</span>
-                  <span class="font-mono text-label px-10 py-4 bg-white/5 rounded-full border border-white/10 text-text-muted">Paper</span>
-                  <span class="font-mono text-label px-10 py-4 bg-white/5 rounded-full border border-white/10 text-text-muted">Spigot</span>
-                </div>
-                <a href="https://github.com/Brick-Bread/Brick-MapProtect" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-8 font-mono text-label text-text-primary hover:text-icy-cyan transition-colors duration-250" id="proj2-source">
-                  <iconify-icon icon="lucide:github" class="text-lg"></iconify-icon>
-                  Source Code
-                </a>
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- Expertise & About Section -->
-      <section id="expertise" class="py-64 lg:py-96 relative z-10">
-        <div class="max-w-site mx-auto px-24 lg:px-64">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-48 lg:gap-64">
-
-            <!-- Expertise Rail -->
-            <div class="lg:col-span-5 scroll-reveal">
-              <div class="glass-panel rounded-card p-32 lg:p-48 h-full">
-                <h2 class="font-heading font-semibold text-3xl mb-48 text-text-primary">
-                  Expertise
-                </h2>
-                <div class="space-y-32 relative before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-white/10 pl-24">
-                  <div class="relative">
-                    <div class="absolute w-2 h-2 rounded-full bg-icy-cyan left-[-28px] top-8 shadow-[0_0_8px_rgba(139,231,240,0.8)]"></div>
-                    <h4 class="font-mono text-label text-text-muted mb-8">Go-to Languages</h4>
-                    <p class="text-body-base text-text-primary font-medium">
-                      Python and Skript
-                    </p>
-                  </div>
-                  <div class="relative">
-                    <div class="absolute w-2 h-2 rounded-full bg-soft-blue left-[-28px] top-8 shadow-[0_0_8px_rgba(113,158,255,0.8)]"></div>
-                    <h4 class="font-mono text-label text-text-muted mb-8">Self-hosting</h4>
-                    <p class="text-body-base text-text-primary font-medium">
-                      Linux, Docker and networking
-                    </p>
-                  </div>
-                  <div class="relative">
-                    <div class="absolute w-2 h-2 rounded-full bg-white/30 left-[-28px] top-8"></div>
-                    <h4 class="font-mono text-label text-text-muted mb-8">Actively learning</h4>
-                    <p class="text-body-base text-text-primary font-medium">
-                      Java, JavaScript, HTML and CSS
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- About -->
-            <div class="lg:col-span-7 scroll-reveal" id="about">
-              <div class="p-0 lg:py-32">
-                <h2 class="font-heading font-semibold text-section mb-48 text-text-primary">
-                  About
-                </h2>
-                <div class="space-y-24 text-body-base text-text-muted max-w-2xl">
-                  <p>
-                    I'm a Minecraft network owner and content creator. Brickworks is my own network: development, hosting and content. I enjoy building the systems behind it and the community around it.
-                  </p>
-                  <p>
-                    Self-hosting got me into Linux, Docker and networking. Looking after my own infrastructure gives me plenty to learn, improve and fix.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section (Luminous Panel) -->
-      <section id="contact" class="py-64 lg:py-128 relative z-10">
-        <div class="max-w-site mx-auto px-24 lg:px-64 scroll-reveal">
-          <div class="glass-panel rounded-[32px] p-48 lg:p-80 relative overflow-hidden text-center lg:text-left">
-             <!-- Intense inner glow -->
-             <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,rgba(139,231,240,0.1),transparent_70%)] pointer-events-none"></div>
-             <div class="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,rgba(113,158,255,0.08),transparent_70%)] pointer-events-none"></div>
-
-            <div class="relative z-10 max-w-3xl mx-auto lg:mx-0">
-              <h2 class="font-heading font-semibold text-4xl lg:text-5xl mb-24 text-text-primary">
-                Let's build something worth logging in for.
-              </h2>
-              <p class="text-body-base text-text-muted mb-48 text-lg">
-                Server development, a plugin, content or a collaboration.
-              </p>
-
-              <div class="flex flex-col sm:flex-row gap-32 justify-center lg:justify-start">
-                <a href="mailto:brick@brick-bread.me" class="inline-flex flex-col group items-center lg:items-start" id="contact-email">
-                  <span class="font-mono text-label text-text-muted mb-8">Email</span>
-                  <span class="font-heading font-medium text-xl md:text-2xl text-text-primary group-hover:text-icy-cyan transition-colors duration-250 inline-flex items-center gap-8">
-                    brick@brick-bread.me
-                    <iconify-icon icon="lucide:arrow-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-250"></iconify-icon>
-                  </span>
-                </a>
-
-                <a href="https://github.com/Brick-Bread" target="_blank" rel="noopener noreferrer" class="inline-flex flex-col group items-center lg:items-start" id="contact-github">
-                  <span class="font-mono text-label text-text-muted mb-8">GitHub</span>
-                  <span class="font-heading font-medium text-xl md:text-2xl text-text-primary group-hover:text-soft-blue transition-colors duration-250 inline-flex items-center gap-8">
-                    @Brick-Bread
-                    <iconify-icon icon="lucide:arrow-up-right" class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-250"></iconify-icon>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-48 relative z-10 border-t border-white/5 mt-auto">
-      <div class="max-w-site mx-auto px-24 lg:px-64 flex flex-col md:flex-row justify-between items-center gap-16">
-        <p class="font-mono text-label text-text-muted">
-          © 2026 Brick_Bread
-        </p>
-        <p class="font-mono text-label text-text-muted flex items-center gap-8">
-          <span class="w-2 h-2 rounded-full bg-icy-cyan/50"></span>
-          Code, servers &amp; community
-        </p>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
       </div>
-    </footer>
+      <div class="ip-chip">
+        <span class="lbl">play</span><code>play.brickworks.world</code>
+        <button class="copy" type="button" data-copy="play.brickworks.world" aria-label="Copy server address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+          <span class="t">Copy</span>
+        </button>
+      </div>
+    </div>
+  </section>
 
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="idx">01</span>
+        <h2>Selected work</h2>
+      </div>
+
+      <div class="projects">
+
+        <article class="card feature reveal">
+          <div>
+            <p class="proj-role">Owner &amp; developer · flagship</p>
+            <h3><a href="https://github.com/Brick-Bread/brickworks-site" target="_blank" rel="noopener">Brickworks Network
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></h3>
+            <p class="desc">My Minecraft network and the home of BrickSMP, built on custom Skript systems, server development, hosting and content. I look after both the server and the community around it.</p>
+            <div class="tags"><span class="tag">Skript</span><span class="tag">Server ops</span><span class="tag">Self-hosted</span><span class="tag">Community</span></div>
+            <div class="ip-chip" style="margin-top:4px">
+              <span class="lbl">play</span><code>play.brickworks.world</code>
+              <button class="copy" type="button" data-copy="play.brickworks.world" aria-label="Copy server address">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+                <span class="t">Copy</span>
+              </button>
+            </div>
+          </div>
+          <div class="shot" aria-hidden="false">
+            <img src="bricksmp-sunset.png" alt="A sunset over the BrickSMP Minecraft world" width="1920" height="1009" loading="lazy" decoding="async">
+            <span class="cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M17 18a5 5 0 0 0-10 0"></path><line x1="12" y1="2" x2="12" y2="9"></line><path d="m4.2 10.2 1.4 1.4M18.4 10.2l-1.4 1.4M2 18h2M20 18h2"></path></svg>
+              BrickSMP at sunset
+            </span>
+          </div>
+        </article>
+
+        <div class="two">
+          <article class="card reveal">
+            <p class="proj-role cool">Java plugin · Paper / Spigot</p>
+            <h3><a href="https://modrinth.com/plugin/brick-mapprotect" target="_blank" rel="noopener">Brick-MapProtect
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></h3>
+            <p class="desc">Protects original map blocks from non-opped players, with configurable per-world protection, a block-placement toggle, and anti-grief for water, lava and fire.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">Paper</span><span class="tag">Spigot</span></div>
+            <div class="proj-links">
+              <a href="https://modrinth.com/plugin/brick-mapprotect" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"></path><path d="M12 7v5l3 2"></path></svg>
+                Modrinth</a>
+              <a href="https://github.com/Brick-Bread/Brick-MapProtect" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C18 4.6 19 4.9 19 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 12 .5Z"></path></svg>
+                Source</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <p class="proj-role">C# · Windows desktop</p>
+            <h3><a href="https://github.com/Brick-Bread/WNotch" target="_blank" rel="noopener">WNotch
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a></h3>
+            <p class="desc">A dynamic notch for Windows 11 that lives at the top of the screen. Its companion plugin, <span class="mono" style="font-size:.9em">wnotchcalagopus</span>, hooks into the Calagopus panel to watch my servers at a glance.</p>
+            <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Desktop</span></div>
+            <div class="proj-links">
+              <a href="https://github.com/Brick-Bread/WNotch" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 8.4 22.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C18 4.6 19 4.9 19 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 12 .5Z"></path></svg>
+                Source</a>
+              <a href="https://github.com/Brick-Bread/wnotchcalagopus" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"></path></svg>
+                Panel plugin</a>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="more">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="idx">02</span>
+        <h2>Also in the workshop</h2>
+      </div>
+      <div class="workshop">
+        <a class="mini reveal" href="https://github.com/Brick-Bread/deepmode-android" target="_blank" rel="noopener">
+          <span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><line x1="11" y1="18" x2="13" y2="18"></line></svg></span>
+          <div>
+            <h4>DeepMode <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></h4>
+            <p>Privacy-first focus and app-blocking tool for Android 12+.</p>
+            <span class="lang">Java</span>
+          </div>
+        </a>
+        <a class="mini reveal" href="https://github.com/Brick-Bread/minecraft-server-status" target="_blank" rel="noopener">
+          <span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"></rect><rect x="3" y="14" width="18" height="6" rx="1.5"></rect><line x1="7" y1="7" x2="7" y2="7"></line><line x1="7" y1="17" x2="7" y2="17"></line></svg></span>
+          <div>
+            <h4>Server Status <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></h4>
+            <p>A small tool for checking whether a Minecraft server is up.</p>
+            <span class="lang">Tooling</span>
+          </div>
+        </a>
+        <a class="mini reveal" href="https://github.com/Brick-Bread/tinawrustcrawler" target="_blank" rel="noopener">
+          <span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"></path></svg></span>
+          <div>
+            <h4>Rust Crawler <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></h4>
+            <p>A web crawler experiment, built to learn Rust by making something real.</p>
+            <span class="lang">Rust</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="stack">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="sec-head" style="margin-bottom:28px"><span class="idx">03</span><h2>Stack</h2></div>
+          <div class="exp-list">
+            <div class="exp-item"><h4>Everyday</h4><p>Python &amp; Skript</p></div>
+            <div class="exp-item"><h4>Building with</h4><p>Java &amp; C#</p></div>
+            <div class="exp-item"><h4>Self-hosting</h4><p>Linux, Docker &amp; networking</p></div>
+            <div class="exp-item"><h4>Learning</h4><p>Rust, JavaScript, HTML &amp; CSS</p></div>
+          </div>
+        </div>
+        <div class="about reveal" id="about">
+          <div class="sec-head" style="margin-bottom:28px"><span class="idx">04</span><h2>About</h2></div>
+          <p>I'm a <b>sixth-form computer science student</b> in Wolverhampton and the owner of <b>Brickworks Network</b>. Most of what I know started with wanting my own Minecraft server to run well, which pulled me into plugins, Linux, Docker and networking.</p>
+          <p>I like building the systems behind a community as much as the community itself: the plugin that stops griefing, the panel that shows a server's health, the small tools that make running everything a little easier.</p>
+          <p>Right now I'm deepening my Java and picking up web development, so this site, hand-built with no framework, is part of the practice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <h2>Let's build something worth logging in for.</h2>
+        <p>Server development, a plugin, content, or a collaboration. I'm happy to talk.</p>
+        <div class="contact-grid">
+          <div class="cfield">
+            <span class="k">Email</span>
+            <div class="row">
+              <a class="v" href="mailto:brick@brick-bread.me">brick@brick-bread.me</a>
+              <button class="copy" type="button" data-copy="brick@brick-bread.me" aria-label="Copy email address">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+                <span class="t">Copy</span>
+              </button>
+            </div>
+          </div>
+          <div class="cfield">
+            <span class="k">GitHub</span>
+            <div class="row">
+              <a class="v" href="https://github.com/Brick-Bread" target="_blank" rel="noopener">@Brick-Bread
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:.7em;height:.7em;opacity:.55"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+            </div>
+          </div>
+          <div class="cfield">
+            <span class="k">Server</span>
+            <div class="row">
+              <span class="v mono" style="font-weight:500">play.brickworks.world</span>
+              <button class="copy" type="button" data-copy="play.brickworks.world" aria-label="Copy server address">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+                <span class="t">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Brick_Bread</span>
+    <span class="made"><span class="sq" aria-hidden="true"></span> Code, servers &amp; community · hand-built, no framework</span>
   </div>
+</footer>
 
-  <script src="script.js" defer></script>
-</div>
-</body>
-</html>
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+
+  // ---- theme toggle ----
+  var btn = document.getElementById("themeBtn");
+  var icon = document.getElementById("themeIcon");
+  var SUN = '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>';
+  var MOON = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>';
+  function stored() { try { return localStorage.getItem("bb-theme"); } catch (e) { return null; } }
+  function effective() {
+    var t = root.getAttribute("data-theme");
+    if (t) return t;
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  function paintIcon() { icon.innerHTML = effective() === "dark" ? SUN : MOON; }
+  var saved = stored();
+  if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+  paintIcon();
+  btn.addEventListener("click", function () {
+    var next = effective() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("bb-theme", next); } catch (e) {}
+    paintIcon();
+  });
+
+  // ---- copy buttons ----
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var text = b.getAttribute("data-copy");
+      var label = b.querySelector(".t");
+      var original = label ? label.textContent : "";
+      function ok() {
+        b.classList.add("done");
+        if (label) label.textContent = "Copied";
+        setTimeout(function () { b.classList.remove("done"); if (label) label.textContent = original; }, 1600);
+      }
+      function fallback() {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select(); document.execCommand("copy");
+          document.body.removeChild(ta); ok();
+        } catch (e) {}
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(ok).catch(fallback);
+      } else { fallback(); }
+    });
+  });
+
+  // ---- reveal on scroll (motion only; content visible by default) ----
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce && "IntersectionObserver" in window) {
+    document.body.classList.add("js-motion");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  }
+
+  // ---- hero embers (ambient, reduced-motion safe) ----
+  var canvas = document.getElementById("embers");
+  if (canvas && !reduce) {
+    var ctx = canvas.getContext("2d");
+    var parts = [], raf = null, W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function hostHue() {
+      return effective() === "dark" ? [242, 166, 90] : [185, 120, 60];
+    }
+    function size() {
+      var r = canvas.parentElement.getBoundingClientRect();
+      W = r.width; H = r.height;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function seed() {
+      parts = [];
+      var n = Math.max(18, Math.min(46, Math.round(W / 26)));
+      for (var i = 0; i < n; i++) {
+        parts.push({
+          x: Math.random() * W, y: Math.random() * H,
+          r: Math.random() * 1.8 + 0.6, s: Math.random() * 0.4 + 0.12,
+          drift: (Math.random() - 0.5) * 0.3, a: Math.random() * 0.5 + 0.15,
+          tw: Math.random() * Math.PI * 2
+        });
+      }
+    }
+    function frame() {
+      ctx.clearRect(0, 0, W, H);
+      var c = hostHue();
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        p.y -= p.s; p.x += p.drift; p.tw += 0.03;
+        if (p.y < -6) { p.y = H + 6; p.x = Math.random() * W; }
+        var alpha = p.a * (0.6 + 0.4 * Math.sin(p.tw));
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + alpha.toFixed(3) + ")";
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    function start() { if (!raf) frame(); }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+    size(); seed(); start();
+    var rt;
+    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { size(); seed(); }, 200); });
+    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+  }
+})();
+</script>
